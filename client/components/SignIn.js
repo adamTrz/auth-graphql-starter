@@ -3,12 +3,9 @@ import {graphql} from 'react-apollo';
 import AuthForm from './AuthForm';
 import {signIn} from '../mutations/user';
 import {getUser} from '../queries/user';
+import AuthHOC from './AuthHOC';
 
-class LogIn extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {errors: []};
-  }
+class LogIn extends AuthHOC {
   handleSignIn({email, password}) {
     this.props
       .mutate({
@@ -34,4 +31,4 @@ class LogIn extends Component {
   }
 }
 
-export default graphql(signIn)(LogIn);
+export default graphql(getUser)(graphql(signIn)(LogIn));
