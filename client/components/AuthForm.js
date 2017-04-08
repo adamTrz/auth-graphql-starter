@@ -1,4 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
+
+const propTypes = {
+  onSubmit: PropTypes.func,
+  errors: PropTypes.arrayOf(PropTypes.string),
+};
+const defaultProps = {
+  onSubmit: () => {},
+  errors: [],
+};
 
 class AuthForm extends Component {
   constructor(props) {
@@ -36,6 +45,9 @@ class AuthForm extends Component {
               onChange={e => this.setState({password: e.target.value})}
             />
           </div>
+          <div className="errors">
+            {this.props.errors.map(e => <div key={e}>{e}</div>)}
+          </div>
           <button className="btn">
             Submit
           </button>
@@ -44,5 +56,8 @@ class AuthForm extends Component {
     );
   }
 }
+
+AuthForm.propTypes = propTypes;
+AuthForm.defaultProps = defaultProps;
 
 export default AuthForm;

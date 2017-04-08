@@ -6,6 +6,7 @@ import {Router, hashHistory, Route, IndexRoute} from 'react-router';
 
 import App from './components/App';
 import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 /*
 since we use cookies to store user data in our app, we have to let know apollo about that fact
@@ -29,6 +30,7 @@ const Root = () => {
       <Router history={hashHistory}>
         <Route path="/" component={App}>
           <Route path="/signIn" component={SignIn} />
+          <Route path="/signUp" component={SignUp} />
         </Route>
       </Router>
     </ApolloProvider>
