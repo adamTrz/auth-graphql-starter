@@ -8,6 +8,7 @@ import App from './components/App';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Dashboard from './components/Dashboard';
+import requireAuth from './components/requireAuth';
 
 /*
 since we use cookies to store user data in our app, we have to let know apollo about that fact
@@ -32,7 +33,7 @@ const Root = () => {
         <Route path="/" component={App}>
           <Route path="/signIn" component={SignIn} />
           <Route path="/signUp" component={SignUp} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/dashboard" component={requireAuth(Dashboard)} />
         </Route>
       </Router>
     </ApolloProvider>
